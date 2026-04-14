@@ -5,414 +5,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lingkaran Setan | Tongkrongan Kopi Lampung</title>
-    <meta name="description"
-        content="Lingkaran Setan — Perkumpulan elite penjelajah rasa asli Kopi Lampung. Komunitas kopi eksklusif dari Lampung.">
-
-    <!-- Open Graph / Meta -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lingkaransetan.com/">
-    <meta property="og:title" content="Lingkaran Setan | Tongkrongan Kopi Lampung">
-    <meta property="og:description" content="Perkumpulan elite penjelajah rasa asli Kopi Lampung.">
-    <meta property="og:image" content="gallery-kopi.jpeg">
-
-    <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="favicon-kopi.jpeg">
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <!-- Swiper CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-
-    <!-- AOS CSS for Scroll Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- GSAP for advanced animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <!-- Three.js for 3D visuals -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.157.0/three.min.js"></script>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <!-- Scroll Progress Indicator -->
+<body class="page-home">
+    <div class="page-transition-overlay"></div>
     <div class="scroll-progress-bar" id="scrollProgress"></div>
-    <!-- Custom Mouse Cursor -->
     <div class="custom-cursor"></div>
     <div class="custom-cursor-glow"></div>
 
-    <!-- Loading Screen -->
     <div class="loader" id="loader">
         <div class="loader-inner">
             <div class="loader-logo">LINGKARAN <span>SETAN</span></div>
-            <div class="loader-bar">
-                <div class="loader-fill"></div>
-            </div>
+            <div class="loader-bar"><div class="loader-fill"></div></div>
             <div class="loader-text">INITIALIZING...</div>
             <div class="loader-counter" id="loaderCounter">0%</div>
         </div>
     </div>
 
-    <!-- Navbar -->
     <nav class="navbar" id="navbar">
-        <div class="logo">LINGKARAN <span>SETAN</span></div>
+        <div class="logo"><a href="/" style="text-decoration:none; color:inherit;">LINGKARAN <span>SETAN</span></a></div>
         <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </div>
         <ul class="nav-links">
-            <li><a href="#home">Explore</a></li>
-            <li><a href="#founders">Founders</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#basecamp">Basecamp</a></li>
-            <li><a href="#contact" class="nav-cta">Kontak</a></li>
+            <li><a href="/" class="active">Explore</a></li>
+            <li><a href="/founders">Founders</a></li>
+            <li><a href="/experience">Experience</a></li>
+            <li><a href="/connect" class="nav-cta">Kontak</a></li>
         </ul>
     </nav>
 
-    <!-- Main Container -->
     <div class="main-content">
-
         <!-- Hero Section -->
-        <section id="home" class="hero-slider snap-section fullscreen">
-            <!-- Three.js Canvas Container -->
+        <section id="home" class="hero-slider fullscreen">
             <div id="three-canvas-container"></div>
-
             <div class="swiper heroSwiper">
                 <div class="swiper-wrapper">
-
                     <!-- Slide 1 -->
                     <div class="swiper-slide hero-slide">
                         <div class="slide-bg" style="background-image: url('gallery-kopi.jpeg');"></div>
                         <div class="hero-overlay"></div>
-                        <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
-                            <div class="hero-tag" data-aos="fade-down" data-aos-delay="100">⬡ THE NEW STANDARD IN KOPI
-                            </div>
-                            <h1 class="main-heading glitch-text" data-text="LINGKARAN SETAN.">LINGKARAN<br><span
-                                    class="accent-word">SETAN.</span></h1>
-                            <p class="description" data-aos="fade-up" data-aos-delay="400">Perkumpulan elite penjelajah
-                                rasa asli Kopi Lampung.<br>Di sini, setiap tegukan adalah cerita.</p>
-                            <div class="cta-group" data-aos="fade-up" data-aos-delay="600">
-                                <a href="#experience" class="btn btn-primary">LIHAT PENGALAMAN</a>
-                                <a href="#founders" class="btn btn-ghost">SIAPA KAMI</a>
-                            </div>
-                            <div class="hero-stats" data-aos="fade-up" data-aos-delay="800">
-                                <div class="stat"><span class="stat-num">3+</span><span
-                                        class="stat-label">Founders</span></div>
-                                <div class="stat-divider"></div>
-                                <div class="stat"><span class="stat-num">2026</span><span class="stat-label">Est.</span>
-                                </div>
-                                <div class="stat-divider"></div>
-                                <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Cerita</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="swiper-slide hero-slide">
-                        <div class="slide-bg" style="background-image: url('gallery-momen.jpeg');"></div>
-                        <div class="hero-overlay"></div>
-                        <div class="hero-content content-center">
-                            <div class="hero-tag">⬡ EKSPLORASI RASA</div>
-                            <h1 class="main-heading">KOPI<br><span class="accent-word">ASLI LAMPUNG.</span></h1>
-                            <p class="description">Rasakan sentuhan otentik di setiap tetes kopi buatan para ahli kami.
-                            </p>
+                        <div class="hero-content" data-aos="fade-right">
+                            <div class="hero-tag">⬡ THE NEW STANDARD IN KOPI</div>
+                            <h1 class="main-heading glitch-text" data-text="LINGKARAN SETAN.">LINGKARAN<br><span class="accent-word">SETAN.</span></h1>
+                            <p class="description">Perkumpulan elite penjelajah rasa asli Kopi Lampung.</p>
                             <div class="cta-group">
-                                <a href="#founders" class="btn btn-primary">SIAPA KAMI</a>
+                                <a href="/experience" class="btn btn-primary">LIHAT PENGALAMAN</a>
+                                <a href="/founders" class="btn btn-ghost">SIAPA KAMI</a>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Slide 3 -->
-                    <div class="swiper-slide hero-slide">
-                        <div class="slide-bg" style="background-image: url('gallery-eksplorasi.jpeg');"></div>
-                        <div class="hero-overlay"></div>
-                        <div class="hero-content content-right">
-                            <div class="hero-tag">⬡ LINGKARAN KITA</div>
-                            <h1 class="main-heading">MOMEN<br><span class="accent-word">BERHARGA.</span></h1>
-                            <p class="description">Lebih dari sekadar kopi, ini tentang cerita dan kebersamaan kawan.
-                            </p>
-                            <div class="cta-group">
-                                <a href="#experience" class="btn btn-primary">GABUNG SEKARANG</a>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-                <!-- Pagination & Nav -->
-                <div class="swiper-pagination hero-pagination"></div>
-                <div class="hero-scroll-hint">
-                    <span>SCROLL</span>
-                    <div class="scroll-line"></div>
-                </div>
+                <div class="hero-scroll-hint"><span>SCROLL</span><div class="scroll-line"></div></div>
             </div>
         </section>
 
-        <!-- Marquee Ticker -->
-        <div class="ticker-wrap">
-            <div class="ticker">
-                <div class="ticker__item">EST 2026 &bull; LINGKARAN SETAN &bull; KOPI &amp; PERSAHABATAN &bull; LAMPUNG
-                    COFFEE CULTURE &bull; EST 2026 &bull; LINGKARAN SETAN &bull; KOPI &amp; PERSAHABATAN &bull; LAMPUNG
-                    COFFEE CULTURE &bull; EST 2026 &bull; LINGKARAN SETAN &bull; KOPI &amp; PERSAHABATAN &bull; LAMPUNG
-                    COFFEE CULTURE &bull;</div>
-            </div>
-        </div>
-
-        <!-- About/Tagline Section -->
-        <section class="about-section snap-section">
+        <!-- About Section -->
+        <section class="about-section">
             <div class="about-bg-text">KOPI</div>
             <div class="about-inner">
-                <div class="about-left" data-aos="fade-right" data-aos-duration="1000">
+                <div class="about-left" data-aos="fade-right">
                     <div class="label-pill">TENTANG KAMI</div>
-                    <h2 class="section-big-title">Lebih dari<br>Sebuah <span class="gradient-text">Tongkrongan.</span>
-                    </h2>
+                    <h2 class="section-big-title">Lebih dari<br>Sebuah <span class="gradient-text">Tongkrongan.</span></h2>
                 </div>
-                <div class="about-right" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <p class="about-text">Kami adalah <strong>Lingkaran Setan</strong> — sekelompok pemuda Lampung yang
-                        percaya bahwa kopi adalah bahasa universal. Setiap kumpul, setiap teguk, setiap gelak tawa
-                        adalah bagian dari identitas kami.</p>
-                    <p class="about-text">Bukan sekadar nongkrong biasa. Ini tentang <em>eksplorasi</em>, <em>rasa</em>,
-                        dan <em>kebersamaan</em> yang sesungguhnya.</p>
+                <div class="about-right" data-aos="fade-left">
+                    <p class="about-text">Kami adalah <strong>Lingkaran Setan</strong> — sekelompok pemuda Lampung yang percaya bahwa kopi adalah bahasa universal.</p>
                     <div class="about-tags">
                         <span class="tag">☕ Kopi Lokal</span>
                         <span class="tag">🌿 Lampung</span>
-                        <span class="tag">🔥 Est. 2026</span>
                         <span class="tag">🤝 Komunitas</span>
                     </div>
+                    <a href="/founders" class="btn btn-ghost" style="margin-top:20px;">KENALI FOUNDER KAMI</a>
                 </div>
             </div>
-        </section>
-
-        <!-- Founders Slider -->
-        <section id="founders" class="founders-section snap-section">
-            <div class="section-header" data-aos="fade-right">
-                <div class="label-pill">THE TEAM</div>
-                <h2 class="gradient-text">THE ARCHITECTS</h2>
-                <p>MIND BEHIND THE JOURNEY</p>
-            </div>
-
-            <!-- Fullscreen Swiper -->
-            <div class="swiper founderSwiper">
-                <div class="swiper-wrapper">
-
-                    <!-- Bima -->
-                    <div class="swiper-slide founder-slide">
-                        <div class="founder-number">01</div>
-                        <img src="founder-bima.jpeg" class="founder-img" alt="Bima Abrisan Putra Wibisana">
-                        <div class="founder-info">
-                            <h3 class="name">BIMA ABRISAN<br>P. WIBISANA</h3>
-                            <p class="role">THE VISIONARY</p>
-                            <div class="founder-divider"></div>
-                            <div class="specs">
-                                <div class="spec-item"><span>FOCUS</span> BISNIS</div>
-                                <div class="spec-item"><span>PASSION</span> ENGINEER</div>
-                            </div>
-                            <a href="https://instagram.com/ptrwibisana" target="_blank" class="ig-link">
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                                </svg>
-                                @ptrwibisana
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Arsy -->
-                    <div class="swiper-slide founder-slide">
-                        <div class="founder-number">02</div>
-                        <img src="founder-arsy.jpeg" class="founder-img" alt="Arsy Wirabraja">
-                        <div class="founder-info">
-                            <h3 class="name">ARSY<br>WIRABRAJA</h3>
-                            <p class="role">THE EXPLORER</p>
-                            <div class="founder-divider"></div>
-                            <div class="specs">
-                                <div class="spec-item"><span>FOCUS</span> SENI</div>
-                                <div class="spec-item"><span>PASSION</span> SENI ABSTRAK</div>
-                            </div>
-                            <a href="https://instagram.com/mliijck" target="_blank" class="ig-link">
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                                </svg>
-                                @mliijck
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Qory -->
-                    <div class="swiper-slide founder-slide">
-                        <div class="founder-number">03</div>
-                        <img src="founder-qory.jpeg" class="founder-img" alt="M. Qory Ismi Rosie">
-                        <div class="founder-info">
-                            <h3 class="name">M. QORY<br>ISMI ROSIE</h3>
-                            <p class="role">THE CURATOR</p>
-                            <div class="founder-divider"></div>
-                            <div class="specs">
-                                <div class="spec-item"><span>FOCUS</span> BISNIS</div>
-                                <div class="spec-item"><span>PASSION</span> WEB DESIGNER/DEV</div>
-                            </div>
-                            <a href="https://instagram.com/moonofstarr" target="_blank" class="ig-link">
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                                </svg>
-                                @moonofstarr
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- Custom Navigation and Pagination -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </section>
-
-        <!-- Experience Gallery Section -->
-        <section id="experience" class="experience-section snap-section">
-            <div class="section-header exp-header" data-aos="fade-down">
-                <div class="label-pill">GALERI</div>
-                <h2 class="gradient-text">EXPERIENCE</h2>
-                <p>MOMENT OF OUR JOURNEY</p>
-            </div>
-
-            <!-- Gallery Swiper -->
-            <div class="swiper gallerySwiper">
-                <div class="swiper-wrapper">
-                    <!-- Photo 1 -->
-                    <div class="swiper-slide gallery-slide">
-                        <img src="gallery-kopi.jpeg" alt="Pengalaman 1">
-                        <div class="exp-caption"><span class="exp-num">01</span>Kopi &amp; Cerita</div>
-                    </div>
-                    <!-- Photo 2 -->
-                    <div class="swiper-slide gallery-slide">
-                        <img src="gallery-momen.jpeg" alt="Pengalaman 2">
-                        <div class="exp-caption"><span class="exp-num">02</span>Momen Bersama</div>
-                    </div>
-                    <!-- Photo 3 -->
-                    <div class="swiper-slide gallery-slide">
-                        <img src="gallery-eksplorasi.jpeg" alt="Pengalaman 3">
-                        <div class="exp-caption"><span class="exp-num">03</span>Eksplorasi Rasa</div>
-                    </div>
-                    <!-- Photo 4 -->
-                    <div class="swiper-slide gallery-slide">
-                        <img src="gallery-setan.jpeg" alt="Pengalaman 4">
-                        <div class="exp-caption"><span class="exp-num">04</span>Lingkaran Setan 2K26</div>
-                    </div>
-                </div>
-                <!-- Gallery Pagination -->
-                <div class="swiper-pagination gallery-pagination"></div>
-                <!-- Navigation Arrows -->
-                <div class="swiper-button-next gallery-next"></div>
-                <div class="swiper-button-prev gallery-prev"></div>
-            </div>
-        </section>
-
-        <!-- Basecamp Section -->
-        <section id="basecamp" class="basecamp-section snap-section">
-            <div class="basecamp-glow"></div>
-            <div class="basecamp-content" data-aos="fade-up">
-                <div class="label-pill">MARKAS BESAR</div>
-                <h2 class="gradient-text">HOMEROS</h2>
-                <div class="address-box">
-                    <p>Jl Durian Payung Gang Haji Aminah,</p>
-                    <p>Kecamatan Durian Payung, Kelurahan Tanjung Karang Pusat,</p>
-                    <p>Bandar Lampung, Lampung.</p>
-                </div>
-                <a href="https://maps.google.com" target="_blank" class="btn btn-ghost map-btn">
-                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                        <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                    BUKA DI GOOGLE MAPS
-                </a>
-            </div>
-        </section>
-
-        <!-- Contact / CTA Section -->
-        <section id="contact" class="contact snap-section">
-            <div class="contact-bg-glow"></div>
-            <div class="contact-box">
-                <div class="label-pill">GET IN TOUCH</div>
-                <h2 class="contact-title">SATU LINGKARAN,<br><span class="gradient-text">SATU SETAN.</span></h2>
-                <p class="contact-sub">Ada pertanyaan? Mau join? Drop a message!</p>
-
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="formNama" placeholder="Nama Anda" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="formPesan" placeholder="Pesan Anda" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-large btn-submit" id="submitBtn">
-                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-                            <line x1="22" y1="2" x2="11" y2="13"></line>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                        </svg>
-                        KIRIM PESAN
-                    </button>
-                    <div class="form-feedback" id="formFeedback"></div>
-                </form>
-
-                <!-- Live Guestbook -->
-                <div class="guestbook-wrap">
-                    <div class="guestbook-label">⬡ PESAN TERBARU</div>
-                    <div class="guestbook-messages" id="guestbookMessages">
-                        <div class="gb-loading">Memuat pesan...</div>
-                    </div>
-                </div>
-
-                <div class="contact-social">
-                    <a href="https://instagram.com/lingkaransetan2k26" target="_blank" class="ig-link-footer">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
-                        @lingkaransetan2k26
-                    </a>
-                </div>
-            </div>
-
-            <!-- Footer -->
+            
             <footer class="footer">
                 <div class="footer-inner">
                     <div class="footer-logo">LINGKARAN <span>SETAN</span></div>
                     <p class="footer-copy">© 2026 Lingkaran Setan. All rights reserved.</p>
-                    <p class="footer-tagline">Kopi &bull; Persahabatan &bull; Lampung</p>
                 </div>
             </footer>
         </section>
-
     </div>
 
-    <!-- Music Player UI -->
-    <audio id="bgMusic" loop>
-        <source src="hindia-kita-ke-sana.mp3" type="audio/mpeg">
-    </audio>
-    <button class="music-fab" id="musicToggle" aria-label="Toggle Background Music">
+    <!-- Persistent Music -->
+    <audio id="bgMusic" loop><source src="hindia-kita-ke-sana.mp3" type="audio/mpeg"></audio>
+    <button class="music-fab" id="musicToggle">
         <div class="eq-bars">
             <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </div>
     </button>
+    <button class="back-to-top" id="backToTop"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to Top">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-    </button>
-
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
-
 </html>

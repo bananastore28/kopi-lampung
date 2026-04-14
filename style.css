@@ -327,11 +327,9 @@ body {
 
 /* ============ SCROLL CONTAINER ============ */
 .main-content {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+    min-height: 100vh;
     position: relative;
+    overflow-x: hidden;
 }
 
 .snap-section {
@@ -1815,3 +1813,57 @@ body {
 }
 .form-feedback.success { color: #6ee76e; }
 .form-feedback.error { color: #ff7070; }
+
+/* ============ MULTI-PAGE ADDITIONS ============ */
+.nav-links a.active {
+    color: var(--accent-neon);
+}
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 11000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+.page-transition-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Connect Grid Layout */
+.connect-section {
+    padding: 120px 5% 60px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.connect-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+}
+@media (max-width: 992px) {
+    .connect-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+}
+.connect-left, .connect-right {
+    position: relative;
+    z-index: 2;
+}
+.map-btn {
+    margin-top: 30px;
+}

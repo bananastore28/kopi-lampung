@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect | Lingkaran Setan</title>
+    <link rel="icon" type="image/jpeg" href="favicon-kopi.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.157.0/three.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="page-connect">
+    <div class="page-transition-overlay"></div>
+    <div class="scroll-progress-bar" id="scrollProgress"></div>
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-glow"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="logo"><a href="/" style="text-decoration:none; color:inherit;">LINGKARAN <span>SETAN</span></a></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Explore</a></li>
+            <li><a href="/founders">Founders</a></li>
+            <li><a href="/experience">Experience</a></li>
+            <li><a href="/connect" class="active nav-cta">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <!-- Combined Basecamp & Contact Section for Compactness -->
+        <section id="connect" class="connect-section">
+            <div class="connect-grid">
+                <!-- Left: Basecamp -->
+                <div class="connect-left" data-aos="fade-right">
+                    <div class="label-pill">MARKAS BESAR</div>
+                    <h2 class="gradient-text" style="font-size: 3rem;">HOMEROS</h2>
+                    <div class="address-box">
+                        <p>Jl Durian Payung Gang Haji Aminah,</p>
+                        <p>Kecamatan Durian Payung, Kelurahan Tanjung Karang Pusat,</p>
+                        <p>Bandar Lampung, Lampung.</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="btn btn-ghost map-btn">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> BUKA DI GOOGLE MAPS
+                    </a>
+                </div>
+
+                <!-- Right: Contact Form -->
+                <div class="connect-right" data-aos="fade-left">
+                    <div class="label-pill">GET IN TOUCH</div>
+                    <h2 class="contact-title" style="font-size: 2.5rem;">DROP A MESSAGE</h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="formNama" placeholder="Nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="formPesan" placeholder="Pesan Anda" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">KIRIM PESAN</button>
+                        <div class="form-feedback" id="formFeedback"></div>
+                    </form>
+
+                    <!-- Guestbook -->
+                    <div class="guestbook-wrap" style="margin-top: 40px;">
+                        <div class="guestbook-label">⬡ PESAN TERBARU</div>
+                        <div class="guestbook-messages" id="guestbookMessages">
+                            <div class="gb-loading">Memuat pesan...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <div class="footer-inner">
+                    <div class="footer-logo">LINGKARAN <span>SETAN</span></div>
+                    <p class="footer-copy">© 2026 Lingkaran Setan. All rights reserved.</p>
+                    <div class="contact-social">
+                        <a href="https://instagram.com/lingkaransetan2k26" target="_blank" class="ig-link-footer">@lingkaransetan2k26</a>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+
+    <!-- Persistent Music -->
+    <audio id="bgMusic" loop><source src="hindia-kita-ke-sana.mp3" type="audio/mpeg"></audio>
+    <button class="music-fab" id="musicToggle">
+        <div class="eq-bars">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+    </button>
+    <button class="back-to-top" id="backToTop"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
