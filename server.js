@@ -139,6 +139,7 @@ app.post('/api/admin/logout', (req, res) => {
 // ============ PAGE ROUTES ============
 app.get('/', (req, res) => res.sendFile(path.join(ROOT, 'index.html')));
 app.get('/founders', (req, res) => res.sendFile(path.join(ROOT, 'founders.html')));
+app.get('/menu', (req, res) => res.sendFile(path.join(ROOT, 'menu.html')));
 app.get('/experience', (req, res) => res.sendFile(path.join(ROOT, 'experience.html')));
 app.get('/connect', (req, res) => res.sendFile(path.join(ROOT, 'connect.html')));
 app.get('/login', (req, res) => res.sendFile(path.join(ROOT, 'login.html')));
