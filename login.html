@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Lingkaran Setan</title>
+    <link rel="icon" type="image/jpeg" href="favicon-kopi.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --amber: #C96614;
+            --neon: #EAA156;
+            --bg: #060403;
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        /* Animated Background Grid */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(201, 102, 20, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 102, 20, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            animation: gridPulse 4s ease-in-out infinite;
+        }
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        /* Glow */
+        .glow-bg {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(201, 102, 20, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        }
+        .login-card {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(201, 102, 20, 0.2);
+            backdrop-filter: blur(30px);
+            border-radius: 20px;
+            padding: 60px 50px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(201, 102, 20, 0.05);
+        }
+        .brand {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .brand-logo {
+            font-size: 11px;
+            letter-spacing: 5px;
+            color: rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .brand-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .brand-title span { color: var(--neon); }
+        .brand-sub {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: var(--amber);
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        input {
+            width: 100%;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 14px 18px;
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+        input:focus {
+            border-color: var(--amber);
+            background: rgba(255,255,255,0.06);
+            box-shadow: 0 0 20px rgba(201, 102, 20, 0.15);
+        }
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--amber), var(--neon));
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 102, 20, 0.4);
+        }
+        .btn-login:active { transform: translateY(0); }
+        .error-msg {
+            background: rgba(255, 50, 50, 0.1);
+            border: 1px solid rgba(255, 50, 50, 0.3);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            color: #ff8080;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.25);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .back-link:hover { color: var(--neon); }
+    </style>
+</head>
+<body>
+    <div class="glow-bg"></div>
+    <div class="login-card">
+        <div class="brand">
+            <div class="brand-logo">The Inner Circle</div>
+            <div class="brand-title">LINGKARAN <span>SETAN</span></div>
+            <div class="brand-sub">Admin Portal</div>
+        </div>
+        <div class="error-msg" id="errorMsg"></div>
+        <form id="loginForm">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="username" placeholder="Enter username" required autocomplete="username">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter password" required autocomplete="current-password">
+            </div>
+            <button type="submit" class="btn-login" id="loginBtn">MASUK KE MARKAS</button>
+        </form>
+        <a href="/" class="back-link">← Kembali ke Website Utama</a>
+    </div>
+    <script>
+        const form = document.getElementById('loginForm');
+        const errorMsg = document.getElementById('errorMsg');
+        const loginBtn = document.getElementById('loginBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            loginBtn.textContent = 'MEMVERIFIKASI...';
+            loginBtn.disabled = true;
+            errorMsg.style.display = 'none';
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const res = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    loginBtn.textContent = '✓ AKSES DIBERIKAN';
+                    setTimeout(() => window.location.href = '/dashboard', 800);
+                } else {
+                    errorMsg.textContent = data.error || 'Autentikasi gagal.';
+                    errorMsg.style.display = 'block';
+                    loginBtn.textContent = 'MASUK KE MARKAS';
+                    loginBtn.disabled = false;
+                }
+            } catch {
+                errorMsg.textContent = 'Koneksi ke server gagal. Pastikan server berjalan.';
+                errorMsg.style.display = 'block';
+                loginBtn.textContent = 'MASUK KE MARKAS';
+                loginBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
