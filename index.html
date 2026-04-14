@@ -31,8 +31,11 @@
     <!-- AOS CSS for Scroll Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Three.js for 3D visuals -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.157.0/three.min.js"></script>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -78,8 +81,8 @@
 
         <!-- Hero Section -->
         <section id="home" class="hero-slider snap-section fullscreen">
-            <!-- Particles BG -->
-            <div id="particles-js"></div>
+            <!-- Three.js Canvas Container -->
+            <div id="three-canvas-container"></div>
 
             <div class="swiper heroSwiper">
                 <div class="swiper-wrapper">

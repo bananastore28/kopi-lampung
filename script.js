@@ -30,70 +30,131 @@ AOS.init({
     easing: 'ease-out-quart',
 });
 
-// ============ PARTICLES.JS ============
-if (typeof particlesJS !== 'undefined') {
-    particlesJS('particles-js', {
-        particles: {
-            number: { value: 55, density: { enable: true, value_area: 900 } },
-            color: { value: ['#C96614', '#EAA156', '#FDF9F3'] },
-            shape: { type: 'circle' },
-            opacity: {
-                value: 0.25,
-                random: true,
-                anim: { enable: true, speed: 0.5, opacity_min: 0.05, sync: false }
+// ============ THREE.JS 3D ENGINE ============
+function initThreeJS() {
+    const container = document.getElementById('three-canvas-container');
+    if (!container) return;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
+
+    // Create Wireframe Torus (The "Lingkaran")
+    const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+    const material = new THREE.MeshBasicMaterial({ 
+        color: 0xC96614, 
+        wireframe: true,
+        transparent: true,
+        opacity: 0.3
+    });
+    const torus = new THREE.Mesh(geometry, material);
+    scene.add(torus);
+
+    camera.position.z = 30;
+
+    // Animation Loop
+    function animate() {
+        requestAnimationFrame(animate);
+        torus.rotation.x += 0.005;
+        torus.rotation.y += 0.005;
+        renderer.render(scene, camera);
+    }
+
+    // Handle Resize
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Mouse Interaction
+    document.addEventListener('mousemove', (e) => {
+        const mouseX = (e.clientX / window.innerWidth) - 0.5;
+        const mouseY = (e.clientY / window.innerHeight) - 0.5;
+        gsap.to(torus.rotation, {
+            y: mouseX * 2.5,
+            x: mouseY * 2.5,
+            duration: 2,
+            ease: "power2.out"
+        });
+    });
+
+    animate();
+}
+initThreeJS();
+
+// ============ GSAP ANIMATIONS ============
+function initGSAP() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Fade in sections on scroll
+    gsap.from(".hero-content", {
+        opacity: 0,
+        y: 100,
+        duration: 1.5,
+        ease: "power4.out",
+        delay: 0.5
+    });
+
+    // Smooth reveal for titles
+    gsap.utils.toArray('.contact-title, .section-title').forEach(title => {
+        gsap.from(title, {
+            scrollTrigger: {
+                trigger: title,
+                start: "top 90%",
+                toggleActions: "play none none reverse"
             },
-            size: {
-                value: 2,
-                random: true,
-                anim: { enable: true, speed: 1.5, size_min: 0.3, sync: false }
-            },
-            line_linked: {
-                enable: true,
-                distance: 160,
-                color: '#FF6600',
-                opacity: 0.06,
-                width: 1
-            },
-            move: {
-                enable: true,
-                speed: 0.6,
-                direction: 'none',
-                random: true,
-                straight: false,
-                out_mode: 'out',
-                bounce: false,
-            }
-        },
-        interactivity: {
-            detect_on: 'canvas',
-            events: {
-                onhover: { enable: true, mode: 'repulse' },
-                onclick: { enable: true, mode: 'push' },
-                resize: true
-            },
-            modes: {
-                repulse: { distance: 80, duration: 0.4 },
-                push: { particles_nb: 3 }
-            }
-        },
-        retina_detect: true
+            opacity: 0,
+            x: -50,
+            duration: 1,
+            ease: "power2.out"
+        });
     });
 }
+initGSAP();
 
-// ============ NAVBAR ============
-const mainContent = document.querySelector('.main-content');
+// ============ NAVIGATION & SCROLL LOGIC ============
+const mainContentNode = document.querySelector('.main-content');
 const navbar = document.querySelector('.navbar');
 const menuToggle = document.querySelector('#mobile-menu');
 const navLinks = document.querySelector('.nav-links');
+const scrollProgress = document.getElementById('scrollProgress');
+const backToTop = document.getElementById('backToTop');
 
-if (mainContent) {
-    mainContent.addEventListener('scroll', () => {
-        if (mainContent.scrollTop > 50) {
+if (mainContentNode) {
+    mainContentNode.addEventListener('scroll', () => {
+        const scrollTop = mainContentNode.scrollTop;
+        const scrollHeight = mainContentNode.scrollHeight - mainContentNode.clientHeight;
+        
+        // Navbar scrolled effect
+        if (scrollTop > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
+
+        // Scroll Progress logic
+        const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        if (scrollProgress) scrollProgress.style.width = Math.min(progress, 100) + '%';
+        
+        // Back to top logic
+        if (backToTop) {
+            if (scrollTop > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
     });
+
+    if (backToTop) {
+        backToTop.addEventListener('click', () => {
+            mainContentNode.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 }
 
 // Mobile menu toggle
@@ -352,11 +413,6 @@ document.querySelectorAll('.founder-slide').forEach(slide => {
     });
 });
 
-// ============ SCROLL PROGRESS & BACK TO TOP ============
-const scrollProgress = document.getElementById('scrollProgress');
-const backToTop = document.getElementById('backToTop');
-const mainContentNode = document.querySelector('.main-content'); // Changed name to avoid collisions
-
 // ============ SMOOTH SCROLL FOR NAV LINKS ============
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -369,37 +425,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
-if (mainContentNode) {
-    mainContentNode.addEventListener('scroll', () => {
-        // Scroll Progress logic
-        const scrollTop = mainContentNode.scrollTop;
-        const scrollHeight = mainContentNode.scrollHeight - mainContentNode.clientHeight;
-        
-        // Prevent divison by zero if scrollHeight is 0
-        const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-        
-        if (scrollProgress) scrollProgress.style.width = Math.min(progress, 100) + '%';
-        
-        // Back to top logic
-        if (backToTop) {
-            if (scrollTop > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        }
-    });
-
-    if (backToTop) {
-        backToTop.addEventListener('click', () => {
-            mainContentNode.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-}
 
 // ============ LIVE GUESTBOOK ============
 function escapeHtml(str) {
