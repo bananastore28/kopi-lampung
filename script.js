@@ -1,9 +1,9 @@
 // ============ UTILS ============
 function setActiveNavLink() {
-    const currentPath = window.location.pathname;
+    const currentFile = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-links a').forEach(link => {
         const href = link.getAttribute('href');
-        if (href === currentPath || (currentPath === '/' && href === '/')) {
+        if (href === currentFile || (currentFile === '' && href === 'index.html')) {
             link.classList.add('active');
         } else {
             link.classList.remove('active');
