@@ -45,7 +45,6 @@ body {
     background-color: var(--bg-dark);
     color: var(--text-main);
     overflow-x: hidden;
-    cursor: none;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -131,19 +130,7 @@ body {
     }
 }
 
-/* ============ CUSTOM CURSOR ============ */
-.custom-cursor {
-    width: 8px;
-    height: 8px;
-    background: #fff;
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 10000;
-    transition: transform 0.15s ease, background 0.2s;
-    mix-blend-mode: difference;
-}
-
+/* ============ BACKGROUND 3D ============ */
 #three-canvas-container {
     position: absolute;
     top: 0;
@@ -153,30 +140,6 @@ body {
     z-index: 1;
     pointer-events: none;
     opacity: 0.6;
-}
-
-.custom-cursor-glow {
-    width: 36px;
-    height: 36px;
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: width 0.3s, height 0.3s, border 0.3s, background 0.3s;
-}
-
-.custom-cursor.active {
-    transform: scale(3);
-    background: var(--accent-neon);
-    mix-blend-mode: normal;
-}
-
-.custom-cursor-glow.active {
-    width: 56px;
-    height: 56px;
-    border-color: transparent;
-    background: rgba(201, 102, 20, 0.12);
 }
 
 /* ============ CINEMATIC GRAIN ============ */
@@ -1567,35 +1530,35 @@ body {
         display: flex;
     }
 
+    /* Navbar Mobile Fix */
     .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(6, 4, 3, 0.98);
-        border-bottom: 1px solid var(--border-subtle);
+        position: fixed;
+        left: -100%;
+        top: 52px;
         flex-direction: column;
-        align-items: center;
-        padding: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease, padding 0.4s;
-        gap: 0;
+        background: rgba(5, 3, 2, 0.98);
+        backdrop-filter: blur(20px);
+        width: 100%;
+        height: calc(100vh - 52px);
+        text-align: center;
+        transition: 0.4s cubic-bezier(0.45, 0, 0.55, 1);
+        padding: 40px 0;
+        gap: 30px;
     }
 
     .nav-links.active {
-        max-height: 400px;
-        padding: 20px 0;
+        left: 0;
     }
 
     .nav-links li {
         width: 100%;
         text-align: center;
-        padding: 14px 0;
+        padding: 10px 0;
     }
 
     .nav-links a {
-        font-size: 14px;
+        font-size: 1.2rem;
+        letter-spacing: 2px;
         display: block;
     }
 
@@ -1969,32 +1932,6 @@ body {
         display: none;
     }
 
-    /* Navbar Mobile Fix */
-    .nav-links {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background: rgba(5, 3, 2, 0.98);
-        backdrop-filter: blur(20px);
-        width: 100%;
-        height: calc(100vh - 70px);
-        text-align: center;
-        transition: 0.4s cubic-bezier(0.45, 0, 0.55, 1);
-        padding: 40px 0;
-        gap: 30px;
-    }
-    .nav-links.active {
-        left: 0;
-    }
-    .nav-links a {
-        font-size: 1.2rem;
-        letter-spacing: 2px;
-    }
-    .menu-toggle {
-        display: flex;
-    }
-
     /* General Spacing */
     .about-inner {
         flex-direction: column;
@@ -2004,12 +1941,7 @@ body {
     .connect-grid {
         gap: 40px;
     }
-    
-    /* Hide Cursor on Touch */
-    .custom-cursor, .custom-cursor-glow {
-        display: none !important;
-    }
-    
+
     /* Music control position */
     .music-fab {
         left: 20px;
