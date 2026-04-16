@@ -5,7 +5,7 @@ const session = require('express-session');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3456;
+const PORT = process.env.PORT || 3456;
 const ROOT = path.join(__dirname);
 
 // ============ MIDDLEWARE ============
@@ -20,8 +20,18 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 2 } // 2 jam
 }));
 
+const fs = require('fs');
+
 // ============ DATABASE SETUP (SQLite) ============
-const db = new sqlite3.Database(path.join(__dirname, 'database.db'), (err) => {
+let dbPath = path.join(__dirname, 'database.db');
+// Glitch menjaga folder .data agar persisten (tidak terhapus saat server tidur)
+if (process.env.PROJECT_DOMAIN) {
+    const dataDir = path.join(__dirname, '.data');
+    if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir);
+    dbPath = path.join(dataDir, 'database.db');
+}
+
+const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
         console.error('Gagal membuka database:', err.message);
     } else {

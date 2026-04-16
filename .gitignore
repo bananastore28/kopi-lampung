@@ -3,3 +3,4 @@ database.db
 *.db-journal
 .env
 npm-debug.log
+.data/
